@@ -1,8 +1,7 @@
-import {asyncHandler} from '../utils/asyncHandler.js'
-import {ApiError} from '../utils/ApiError.js'
-import {ApiResponse} from '../utils/ApiResponse.js'
+import { ApiError } from '../utils/ApiError.js'
+import { ApiResponse } from '../utils/ApiResponse.js'
+import { asyncHandler } from '../utils/asyncHandler.js'
 
-import jwt from 'jsonwebtoken'
 import { User } from '../models/userModel.js'
 
 const generateAccessAndRefereshTokens = async(userId)=>
@@ -31,7 +30,7 @@ const registerUser = asyncHandler(async (req,res) => {
     console.log(username,password);
 
     const user = await User.create({
-        username: username.toLowerCase(),
+        username,
         password,
     })
     
@@ -91,7 +90,5 @@ const userProfile = asyncHandler(async(req,res)=>{
 
 
 export {
-    registerUser,
-    loginUser,
-    userProfile,
+  loginUser, registerUser, userProfile
 }
